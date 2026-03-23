@@ -1,0 +1,35 @@
+<div class="warehouse-container">
+
+  <div class="page-title">
+    <h1>Warehouses</h1>
+    <p>Multi-warehouse stock overview</p>
+  </div>
+
+  <div class="warehouse-cards">
+    <div class="warehouse-card" *ngFor="let wh of warehouses">
+      <div class="card-header">
+        <mat-icon>warehouse</mat-icon>
+        <h3>{{wh.name}}</h3>
+      </div>
+      <div class="card-body">
+        <div class="info-row">
+          <span class="label">Location</span>
+          <span class="value">{{wh.location}}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Total Items</span>
+          <span class="value">{{wh.totalItems}}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Low Stock</span>
+          <span class="value warning">{{wh.lowStockCount}}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Out of Stock</span>
+          <span class="value danger">{{wh.outOfStockCount}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,84 @@
+.warehouse-container {
+  padding: 24px;
+
+  .page-title {
+    margin-bottom: 24px;
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 600;
+      color: #1a237e;
+    }
+
+    p {
+      margin: 4px 0 0;
+      color: #666;
+    }
+  }
+
+  .warehouse-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .warehouse-card {
+      flex: 1;
+      min-width: 250px;
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+
+      .card-header {
+        background-color: #1a237e;
+        color: white;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        mat-icon {
+          font-size: 28px;
+          width: 28px;
+          height: 28px;
+        }
+
+        h3 {
+          margin: 0;
+          font-size: 16px;
+        }
+      }
+
+      .card-body {
+        padding: 16px;
+        background: white;
+
+        .info-row {
+          display: flex;
+          justify-content: space-between;
+          padding: 8px 0;
+          border-bottom: 1px solid #f0f0f0;
+
+          .label {
+            color: #666;
+            font-size: 14px;
+          }
+
+          .value {
+            font-weight: 600;
+            font-size: 14px;
+
+            &.warning {
+              color: #f59e0b;
+            }
+
+            &.danger {
+              color: #ef4444;
+            }
+          }
+        }
+      }
+    }
+  }
+}

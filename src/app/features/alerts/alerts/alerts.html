@@ -1,0 +1,24 @@
+<div class="alerts-container">
+
+  <div class="page-title">
+    <h1>Stock Alerts</h1>
+    <p>Low stock and reorder notifications</p>
+  </div>
+
+  <div class="alerts-list">
+    <div class="alert-card" *ngFor="let alert of alerts" [class]="alert.type.toLowerCase()">
+      <div class="alert-icon">
+        <mat-icon>{{alert.icon}}</mat-icon>
+      </div>
+      <div class="alert-info">
+        <h3>{{alert.product}}</h3>
+        <p>{{alert.warehouse}} — Quantity: <strong>{{alert.quantity}}</strong></p>
+        <span class="alert-time">{{alert.time}}</span>
+      </div>
+      <div class="alert-badge">
+        {{alert.type}}
+      </div>
+    </div>
+  </div>
+
+</div>
