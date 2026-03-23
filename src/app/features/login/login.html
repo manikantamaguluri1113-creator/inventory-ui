@@ -1,0 +1,40 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <mat-icon>inventory_2</mat-icon>
+      <h1>Inventory MS</h1>
+      <p>Sign in to your account</p>
+    </div>
+
+    <div class="login-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="username" placeholder="Enter username">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'"
+               [(ngModel)]="password" placeholder="Enter password">
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{errorMessage}}
+      </div>
+
+      <button mat-raised-button color="primary"
+              class="login-button"
+              (click)="login()">
+        Sign In
+      </button>
+    </div>
+
+    <div class="login-footer">
+      <p>Default credentials: admin / admin</p>
+    </div>
+  </div>
+</div>

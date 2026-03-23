@@ -21,7 +21,17 @@
         <span>Alerts</span>
       </a>
     </mat-nav-list>
+    <div class="logout-section">
+      <button (click)="logout()" class="logout-btn">
+        Logout
+      </button>
+    </div>
+    <!-- <li (click)="logout()" class="menu-item logout">
+  🚪 Logout
+    </li> -->
   </mat-sidenav>
+  
+    
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

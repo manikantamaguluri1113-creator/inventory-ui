@@ -55,6 +55,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { AdjustStockDialog } from './shared/adjust-stock-dialog/adjust-stock-dialog';
+import { Login } from './features/login/login';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './core/auth/jwt-interceptor';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,8 @@ import { AdjustStockDialog } from './shared/adjust-stock-dialog/adjust-stock-dia
     Warehouse,
     Alerts,
     Sidebar,
-    AdjustStockDialog
+    AdjustStockDialog,
+    Login
   ],
   imports: [
     BrowserModule,
@@ -84,7 +88,8 @@ import { AdjustStockDialog } from './shared/adjust-stock-dialog/adjust-stock-dia
     FormsModule
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [App]
 })
