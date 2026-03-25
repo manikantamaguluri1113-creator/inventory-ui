@@ -58,6 +58,7 @@ import { AdjustStockDialog } from './shared/adjust-stock-dialog/adjust-stock-dia
 import { Login } from './features/login/login';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './core/auth/jwt-interceptor';
+import { WebSocketService } from './core/services/websocket';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { JwtInterceptor } from './core/auth/jwt-interceptor';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    WebSocketService
   ],
   bootstrap: [App]
 })
