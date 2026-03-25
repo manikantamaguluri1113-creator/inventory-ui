@@ -51,6 +51,8 @@ export class Stock implements OnInit {
 
   displayedColumns = ['product', 'warehouse', 'quantity', 'threshold', 'status', 'actions'];
   stockData: StockItem[] = [];
+  searchText: string = '';
+  originalData: any[] = [];
 
   constructor(
     private stockService: StockService,
@@ -66,6 +68,7 @@ export class Stock implements OnInit {
     this.stockService.getAllStock().subscribe({
       next: (data) => {
         this.stockData = data;
+        this.originalData = data;
         this.cdr.detectChanges();
       },
       error: (err) => console.error('Error loading stock', err)
@@ -100,4 +103,14 @@ export class Stock implements OnInit {
       }
     });
   }
+
+  applyFilter() {
+
+  const search = this.searchText.toLowerCase();
+
+  this.stockData = this.originalData.filter(item =>
+    item.productName.toLowerCase().includes(search) ||
+    item.warehouseName.toLowerCase().includes(search)
+  );
+}
 }
