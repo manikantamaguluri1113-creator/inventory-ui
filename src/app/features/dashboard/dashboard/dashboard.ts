@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { StockService } from '../../../core/services/stock';
 import { WebSocketService } from '../../../core/services/websocket';
 import { Stock } from '../../../core/models/stock';
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,6 +29,7 @@ export class Dashboard implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadStock();
     this.connectWebSocket();
+
   }
 
   loadStock() {
@@ -36,6 +38,7 @@ export class Dashboard implements OnInit, OnDestroy {
         this.stockData = data;
         this.updateCounts(data);
         this.cdr.detectChanges();
+        this.createChart(data);
       },
       error: (err) => console.error('Error loading stock', err)
     });
@@ -69,4 +72,21 @@ export class Dashboard implements OnInit, OnDestroy {
     this.wsSubscription?.unsubscribe();
     this.wsService.disconnect();
   }
+
+  createChart(data: any[]) {
+
+  const labels = data.map(i => i.productName);
+  const quantities = data.map(i => i.quantity);
+
+  new Chart("stockChart", {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Stock Quantity',
+        data: quantities
+      }]
+    }
+  });
+}
 }
