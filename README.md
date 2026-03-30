@@ -1,59 +1,78 @@
-# InventoryUi
+# Inventory Management System — Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+A real-time inventory management dashboard built with Angular 19 and Angular Material.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+- **JWT Authentication** — Secure login with token-based authentication
+- **Real-Time Dashboard** — Live stock updates via WebSocket (STOMP)
+- **Stock Management** — View and adjust stock levels across warehouses
+- **Multi-Warehouse View** — Monitor stock across multiple warehouse locations
+- **Stock Alerts** — Real-time low stock and out-of-stock notifications
+- **Responsive Design** — Clean UI built with Angular Material
 
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Angular 19 |
+| UI Library | Angular Material |
+| Real-Time | STOMP WebSocket, SockJS |
+| HTTP Client | Angular HttpClient |
+| Styling | SCSS |
+| Language | TypeScript |
+
+## 📁 Project Structure
+```
+src/app/
+├── core/
+│   ├── auth/          # JWT interceptor, auth guard
+│   ├── models/        # TypeScript interfaces
+│   └── services/      # HTTP + WebSocket services
+├── features/
+│   ├── dashboard/     # Real-time overview
+│   ├── stock/         # Stock management
+│   ├── warehouse/     # Warehouse overview
+│   ├── alerts/        # Stock alerts
+│   └── login/         # Authentication
+└── shared/
+    ├── sidebar/       # Navigation
+    └── adjust-stock-dialog/  # Stock adjustment dialog
+```
+
+## ⚙️ Prerequisites
+
+- Node.js 18+
+- Angular CLI 17+
+
+## 🔧 Installation & Setup
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/inventory-ui.git
+cd inventory-ui
+
+# Install dependencies
+npm install
+
+# Start development server
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200` in your browser.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+## 🔑 Default Credentials
+```
+Username: admin
+Password: admin
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🌐 Environment Configuration
 
-```bash
-ng generate --help
+Update `src/environments/environment.development.ts`:
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8081'
+};
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
